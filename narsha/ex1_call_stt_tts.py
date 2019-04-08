@@ -142,9 +142,10 @@ def main():
 		
 		if(text in "안녕"):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-
-		if(text in "이름"):
+		elif(text in "이름"):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
+		else:
+			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
 
 		MS.play_file(output_file)
 		text=""
