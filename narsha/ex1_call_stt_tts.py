@@ -136,13 +136,8 @@ def getText2VoiceStream(inText,inFileName):
 def Clock_hour(): # 시간 [시]
 	time=["한","두","세","네","다섯","여섯","일곱","여덟","아홉","열","열한","열두"] # 만약 안해줄시 시간을 물을때 "한시"가 아니라 "일시"라고 대답한다
 	now=datetime.datetime.now()
-	now_hour=now.hour
 
-	if(now.hour>12):
-		now_hour=now_hour-12
-
-	now_hour=time[now_hour-1]
-	return now_hour
+	return time[(now.hour -1)%12]
 
 def Clock_minute(): # 시간 [분]
 	now=datetime.datetime.now()
@@ -176,7 +171,7 @@ def main():
 			getText2VoiceStream("지금은 "+hour+"시, "+str(minute)+"분 입니다", output_file)
 
 		else:
-			getText2VoiceStream("알아들을 수 가 없습니다 다시한번 말씀 해주세요.", output_file)
+			getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
 		MS.play_file(output_file)
 		text=""
