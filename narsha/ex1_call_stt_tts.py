@@ -155,10 +155,10 @@ def main():
 
 		if(int(test_return) == 200):
 			text = getVoice2Text()
-			print("text : %s"%text)
+			# print("text : %s"%text)
 
 		text = text.encode("utf-8")
-		print("type : %s" %type(text))
+		# print("type : %s" %type(text))
 
 		if("안녕" in text):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
@@ -168,7 +168,7 @@ def main():
 		elif(("몇시" in text) or ("시간") in text ):
 			hour=Clock_hour()
 			minute=Clock_minute()
-			getText2VoiceStream("지금은"+hour+"시, "+str(minute)+"분 입니다", output_file)
+			getText2VoiceStream("지금은 "+hour+"시, "+str(minute)+"분 입니다", output_file)
 
 		else:
 			getText2VoiceStream("알아들을 수 가 없습니다 다시한번 말씀 해주십시오.", output_file)
