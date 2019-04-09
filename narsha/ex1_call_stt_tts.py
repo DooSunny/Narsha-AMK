@@ -107,7 +107,7 @@ def getVoice2Text():
                   % (response.resultCd, response.recognizedText))
             break
 
-    print ("\n\n인식결과: %s \n\n\n" % (resultText))
+    print ("\n\n인식결과: %s \n\n\n" % (response.recognizedText))
     return resultText
 
 def getText2VoiceStream(inText,inFileName):
