@@ -7,3 +7,5 @@ getto = where.get_weather()
 
 print('deagu : ', getto.get_status(), getto.get_temperature(unit='celsius')['temp'])
 #Using Open Weather Map api 
+
+#공공데이터 API로 미세먼지 데이터 가져올 예정
