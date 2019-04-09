@@ -5,6 +5,10 @@
 
 from __future__ import print_function
 
+
+import grpc
+import gigagenieRPC_pb2
+import gigagenieRPC_pb2_grpc
 import audioop
 from ctypes import *
 import RPi.GPIO as GPIO
