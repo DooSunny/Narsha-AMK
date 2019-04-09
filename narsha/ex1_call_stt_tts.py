@@ -145,6 +145,8 @@ def main():
 
 		strin = "안녕"
 
+		print(strin == text)
+
 
 		if(strin == text):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
