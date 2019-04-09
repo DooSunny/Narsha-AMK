@@ -141,7 +141,7 @@ def main():
 			print("text : %s"%text)
 
 		text = unicodedata.normalize('NFKD',text).encode('utf-8')
-		print("type : %s"%text)
+		print("type : %s"%type(text))
 
 
 		if("안녕" in text):
