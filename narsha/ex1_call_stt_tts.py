@@ -5,24 +5,24 @@
 
 from __future__ import print_function
 
-
 import grpc
 import gigagenieRPC_pb2
 import gigagenieRPC_pb2_grpc
+import MicrophoneStream as MS
+import user_auth as UA
+import os
 import audioop
 from ctypes import *
 import RPi.GPIO as GPIO
 import ktkws # KWS
 import MicrophoneStream as MS
-import user_auth as UA
-import os
 
-HOST = 'gate.gigagenie.ai'
-PORT = 4080
+KWSID = ['기가지니', '지니야', '친구야', '자기야']
 RATE = 16000
 CHUNK = 512
 
-KWSID = ['기가지니', '지니야', '친구야', '자기야']
+HOST = 'gate.gigagenie.ai'
+PORT = 4080
 RATE = 16000
 CHUNK = 512
 
@@ -41,23 +41,11 @@ def callback(channel):
 GPIO.add_event_detect(29, GPIO.FALLING, callback=callback, bouncetime=10)
 
 ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
-
 def py_error_handler(filename, line, function, err, fmt):
   dummy_var = 0
 c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)
 asound = cdll.LoadLibrary('libasound.so')
-
-def generate_request():
-    with MS.MicrophoneStream(RATE, CHUNK) as stream:
-        audio_generator = stream.generator()
-    
-        for content in audio_generator:
-            message = gigagenieRPC_pb2.reqVoice()
-            message.audioContent = content
-            yield message
-            
-            rms = audioop.rms(content,2)
-            #print_rms(rms)
+asound.snd_lib_error_set_handler(c_error_handler)
 
 def detect():
 	with MS.MicrophoneStream(RATE, CHUNK) as stream:
@@ -85,6 +73,18 @@ def test(key_word = '기가지니'):
 	print ('\n\n호출어가 정상적으로 인식되었습니다.\n\n')
 	ktkws.stop()
 	return rc
+
+def generate_request():
+    with MS.MicrophoneStream(RATE, CHUNK) as stream:
+        audio_generator = stream.generator()
+    
+        for content in audio_generator:
+            message = gigagenieRPC_pb2.reqVoice()
+            message.audioContent = content
+            yield message
+            
+            rms = audioop.rms(content,2)
+            #print_rms(rms)
 
 def getVoice2Text():	
     print ("\n\n음성인식을 시작합니다.\n\n종료하시려면 Ctrl+\ 키를 누루세요.\n\n\n")
@@ -131,18 +131,15 @@ def getText2VoiceStream(inText,inFileName):
 
 def main():
 	output_file = "testtts.wav"
-	
-	test_return=test()
-	
-	if(int(test_return)==200):
+
+	test_return = test()
+
+	if(test_return = 200):
 		text = getVoice2Text()
-		print("text : %s"%text)
-
+	
 	if(text):
-		getText2VoiceStream("안녕하세요. 반갑습니다.",output_file)
-		play_file(output_file)
-
-	text=False
+		getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
+		MS.play_file(output_file)
 
 if __name__ == '__main__':
 	main()
