@@ -108,7 +108,7 @@ def getVoice2Text():
             break
 
     print ("\n\n인식결과: %s \n\n\n" % (resultText))
-		resultText.decode('utf-8')
+		resultText.encode('utf-8')
     return resultText
 
 def getText2VoiceStream(inText,inFileName):
