@@ -130,6 +130,9 @@ def getText2VoiceStream(inText,inFileName):
 	writeFile.close()
 	return response.resOptions.resultCd
 
+#==========================================================================================================
+# what time is it?
+
 def Clock_hour(): # 시간 [시]
 	time=["한","두","세","네","다섯","여섯","일곱","여덟","아홉","열","열한","열두"] # 만약 안해줄시 시간을 물을때 "한시"가 아니라 "일시"라고 대답한다
 	now=datetime.datetime.now()
@@ -144,7 +147,8 @@ def Clock_hour(): # 시간 [시]
 def Clock_minute(): # 시간 [분]
 	now=datetime.datetime.now()
 	return now.minute
-	
+
+#===========================================================================================================
             
 
 def main():
@@ -155,7 +159,8 @@ def main():
 
 		if(int(test_return) == 200):
 			text = getVoice2Text()
-			# print("text : %s"%text)
+			text.strip()
+			print("text : %s"%text)
 
 		text = text.encode("utf-8")
 		# print("type : %s" %type(text))
