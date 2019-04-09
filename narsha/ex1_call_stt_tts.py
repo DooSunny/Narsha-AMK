@@ -140,5 +140,6 @@ def main():
 		play_file(output_file)
 
 	text=False
+	
 if __name__ == '__main__':
 	main()
