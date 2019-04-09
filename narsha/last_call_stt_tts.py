@@ -1,4 +1,4 @@
-import call_stt_tts as cts
+import ex1_call_stt_tts as cts
 
 def main():
 	output_file = "testtts.wav"
