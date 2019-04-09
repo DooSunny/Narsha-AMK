@@ -129,7 +129,7 @@ def getText2VoiceStream(inText,inFileName):
 def main():
 	output_file = "testtts.wav"
 	
-	test_return=cts.test()
+	test_return=test()
 	
 	if(int(test_return)==200):
 		text = getVoice2Text()
