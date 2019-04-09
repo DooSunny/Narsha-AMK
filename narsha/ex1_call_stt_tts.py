@@ -16,7 +16,6 @@ from ctypes import *
 import RPi.GPIO as GPIO
 import ktkws # KWS
 import MicrophoneStream as MS
-import unicodedata
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
 RATE = 16000
@@ -143,16 +142,9 @@ def main():
 		text = text.encode("utf-8")
 		print("type : %s" %type(text))
 
-		strin = "안녕"
-
-		print("안녕" == text)
-		print("안녕" in text)
-
-
-
-		if(strin == text):
+		if("안녕" in text):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-		elif("이름" == text):
+		elif("이름" in text):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
 		else:
 			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
