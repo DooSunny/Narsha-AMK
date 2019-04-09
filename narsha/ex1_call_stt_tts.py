@@ -138,7 +138,9 @@ def main():
 		if(int(test_return) == 200):
 			text = getVoice2Text()
 			print("text : %s"%text)
-		text = str(text)
+
+		print("type : %s"%type(text))
+
 		if(text in "안녕"):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
 		elif(text in "이름"):
