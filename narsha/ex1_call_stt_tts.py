@@ -129,6 +129,24 @@ def getText2VoiceStream(inText,inFileName):
 			writeFile.write(response.audioContent)
 	writeFile.close()
 	return response.resOptions.resultCd
+
+def Clock_hour():
+	time[]={한,두,세,네,다섯,여섯,일곱,여덟,아홉,열,열한,열두}
+	now=datetime.datetime.now()
+	now_hour=now.hour
+
+	if(now.hour>12):
+		now_hour=now_hour-12
+
+	now_hour=time[now_hour-1]
+
+	return now_hour
+
+def Clock_minute():
+	now=datetime.datetime.now()
+
+	return now.minute
+	
             
 
 def main():
@@ -148,13 +166,12 @@ def main():
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
 		elif("이름" in text):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
+
 		elif(("몇시" in text) or ("시간") in text ):
-			now=datetime.datetime.now()
-			hour=now.hour
-			if(hour>12):
-				hour=hour-12
-			minute=now.minute
-			getText2VoiceStream("지금은"+str(hour)+"시"+str(minute)+"분 입니다", output_file)
+			hour=Clock_hour()
+			minute=Clock_minute()
+			getText2VoiceStream("지금은"+hour+"시"+str(minute)+"분 입니다", output_file)
+
 		else:
 			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
 
