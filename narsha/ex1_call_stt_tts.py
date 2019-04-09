@@ -128,23 +128,6 @@ def getText2VoiceStream(inText,inFileName):
 			writeFile.write(response.audioContent)
 	writeFile.close()
 	return response.resOptions.resultCd
-
-def set_time():
-	EvenOrAfter = "오전"
-	now=datetime.datetime.now() #현재 시각을 시스템에서 가져옴
-	hour=now.hour
-	if(now.hour>=12):
-		EvenOrAfter="오후"
-		hour=now.hour%12
-		if(now.hour==12):
-			hour=12
-
-	else:
-		EvenOrAfter="오전"
-	
-	self.time.setText(EvenOrAfter+" %s시 %s분" %(hour,now.minute))
-
-	return hour,minute
             
 
 def main():
@@ -165,7 +148,9 @@ def main():
 		elif("이름" in text):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
 		elif(("몇시" in text) or ("시간") in text ):
-			hour,minute=set_time()
+			now=datetime.datetime.now()
+			hour=now.hour
+			minute=now.minute
 			getText2VoiceStream("지금은"+hour+"시"+minute+"분 입니다", output_file)
 		else:
 			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
