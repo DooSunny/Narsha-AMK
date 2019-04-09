@@ -144,7 +144,7 @@ def main():
 		print("type : %s"%text)
 
 
-		if(text in "안녕"):
+		if(str(text) in "안녕"):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
 		elif(text in "이름"):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
