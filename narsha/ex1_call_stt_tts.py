@@ -16,6 +16,7 @@ from ctypes import *
 import RPi.GPIO as GPIO
 import ktkws # KWS
 import MicrophoneStream as MS
+import unicodedata
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
 RATE = 16000
@@ -139,7 +140,8 @@ def main():
 			text = getVoice2Text()
 			print("text : %s"%text)
 
-		print("type : %s"%str(text))
+		text = unicodedata.normalize('NFKD',text).encode('utf-8')
+		print("type : %s"%text)
 
 
 		if(text in "안녕"):
