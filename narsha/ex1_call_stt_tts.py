@@ -143,10 +143,12 @@ def main():
 		text = unicodedata.normalize('NFKD',text).encode('utf-8')
 		print("type : %s" %type(text))
 
+		strin = "안녕"
 
-		if("안녕" in text):
+
+		if(strin == text):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-		elif("이름" in text):
+		elif("이름" == text):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
 		else:
 			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
