@@ -107,8 +107,8 @@ def getVoice2Text():
                   % (response.resultCd, response.recognizedText))
             break
 
-    print ("\n\n인식결과: %s \n\n\n" % (resultText))
-    return resultText
+    # print ("\n\n인식결과: %s \n\n\n" % (resultText))
+    # return resultText
 
 def getText2VoiceStream(inText,inFileName):
 
@@ -141,6 +141,7 @@ def main():
 	if(text):
 		getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
 		MS.play_file(output_file)
+		text=""
 
 if __name__ == '__main__':
 	main()
