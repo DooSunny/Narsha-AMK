@@ -138,10 +138,10 @@ def main():
 		if(int(test_return) == 200):
 			text = getVoice2Text()
 			print("text : %s"%text)
-		
-		if(str(text) in "안녕"):
+		text = str(text)
+		if(text in "안녕"):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-		elif(str(text) in "이름"):
+		elif(text in "이름"):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
 		else:
 			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
