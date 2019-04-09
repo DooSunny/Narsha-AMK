@@ -171,7 +171,7 @@ def main():
 			getText2VoiceStream("지금은"+hour+"시"+str(minute)+"분 입니다", output_file)
 
 		else:
-			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
+			getText2VoiceStream("알아들을 수 가 없습니다 다시한번 말씀 해주십시오.", output_file)
 
 		MS.play_file(output_file)
 		text=""
