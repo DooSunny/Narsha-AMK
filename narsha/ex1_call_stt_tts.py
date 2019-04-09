@@ -16,6 +16,7 @@ from ctypes import *
 import RPi.GPIO as GPIO
 import ktkws # KWS
 import MicrophoneStream as MS
+import datetime
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
 RATE = 16000
