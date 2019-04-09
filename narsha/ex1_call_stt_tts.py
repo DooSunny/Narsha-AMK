@@ -134,7 +134,7 @@ def main():
 
 	test_return = test()
 
-	if(test_return = 200):
+	if(int(test_return) = 200):
 		text = getVoice2Text()
 	
 	if(text):
