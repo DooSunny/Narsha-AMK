@@ -140,7 +140,7 @@ def main():
 			text = getVoice2Text()
 			print("text : %s"%text)
 
-		text = unicodedata.normalize('NFKD',text).encode('utf-8')
+		text = text.encode("utf-8")
 		print("type : %s" %type(text))
 
 		strin = "안녕"
