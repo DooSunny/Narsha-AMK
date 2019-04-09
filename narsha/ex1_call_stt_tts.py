@@ -105,7 +105,7 @@ def getVoice2Text():
         else:
             print('resultCd=%d | recognizedText= %s' 
                   % (response.resultCd, response.recognizedText))
-            break
+            return resultText
 
     # print ("\n\n인식결과: %s \n\n\n" % (resultText))
     # return resultText
