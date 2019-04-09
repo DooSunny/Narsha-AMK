@@ -136,6 +136,7 @@ def main():
 
 	if(int(test_return) == 200):
 		text = getVoice2Text()
+		print("text : %s"%text)
 	
 	if(text):
 		getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
