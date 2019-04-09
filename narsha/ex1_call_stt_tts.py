@@ -131,7 +131,7 @@ def getText2VoiceStream(inText,inFileName):
 	return response.resOptions.resultCd
 
 def Clock_hour():
-	time[]={한,두,세,네,다섯,여섯,일곱,여덟,아홉,열,열한,열두}
+	time=[한,두,세,네,다섯,여섯,일곱,여덟,아홉,열,열한,열두]
 	now=datetime.datetime.now()
 	now_hour=now.hour
 
