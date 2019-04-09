@@ -152,7 +152,7 @@ def main():
 			now=datetime.datetime.now()
 			hour=now.hour
 			minute=now.minute
-			getText2VoiceStream("지금은"+hour+"시"+minute+"분 입니다", output_file)
+			getText2VoiceStream("지금은"+str(hour)+"시"+str(minute)+"분 입니다", output_file)
 		else:
 			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
 
