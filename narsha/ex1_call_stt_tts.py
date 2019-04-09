@@ -131,7 +131,7 @@ def getText2VoiceStream(inText,inFileName):
 
 def main():
 	output_file = "testtts.wav"
-
+	text=""
 	while True :
 		test_return = test()
 
