@@ -45,7 +45,7 @@ ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
 def py_error_handler(filename, line, function, err, fmt):
   dummy_var = 0
 c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)
-asound = cdll.LoadLibrary('libasound.so')cas
+asound = cdll.LoadLibrary('libasound.so')
 
 def generate_request():
     with MS.MicrophoneStream(RATE, CHUNK) as stream:
