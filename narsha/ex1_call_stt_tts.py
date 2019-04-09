@@ -164,7 +164,7 @@ def main():
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
 		elif("이름" in text):
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
-		elif(("몇시" in text) and ("시간") in text ):
+		elif(("몇시" in text) or ("시간") in text ):
 			hour,minute=set_time()
 			getText2VoiceStream("지금은"+hour+"시"+minute+"분 입니다", output_file)
 		else:
