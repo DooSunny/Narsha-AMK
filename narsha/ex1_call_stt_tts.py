@@ -159,7 +159,7 @@ def main():
 
 		if(int(test_return) == 200):
 			text = getVoice2Text()
-			text.strip()
+			text=text.strip()
 			print("text : %s"%text)
 
 		text = text.encode("utf-8")
