@@ -132,7 +132,7 @@ def main():
 	test_return=cts.test()
 	
 	if(int(test_return)==200):
-		text = cts.getVoice2Text()
+		text = getVoice2Text()
 		print("text : %s"%text)
 
 	if(text):
@@ -140,6 +140,6 @@ def main():
 		play_file(output_file)
 
 	text=False
-	
+
 if __name__ == '__main__':
 	main()
