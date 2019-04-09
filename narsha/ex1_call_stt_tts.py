@@ -147,7 +147,7 @@ def main():
 			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
 
 		MS.play_file(output_file)
-			text=""
+		text=""
 
 if __name__ == '__main__':
 	main()
