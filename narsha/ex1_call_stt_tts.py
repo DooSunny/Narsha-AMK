@@ -145,7 +145,9 @@ def main():
 
 		strin = "안녕"
 
-		print(strin == text)
+		print("안녕" == text)
+		print("안녕" in text)
+
 
 
 		if(strin == text):
