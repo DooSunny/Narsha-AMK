@@ -101,7 +101,7 @@ def getVoice2Text():
             print('resultCd=%d | recognizedText= %s' 
                   % (response.resultCd, response.recognizedText))
             resultText = response.recognizedText
-            return
+            return resultText
         else:
             print('resultCd=%d | recognizedText= %s' 
                   % (response.resultCd, response.recognizedText))
