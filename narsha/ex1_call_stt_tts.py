@@ -151,6 +151,8 @@ def main():
 		elif(("몇시" in text) or ("시간") in text ):
 			now=datetime.datetime.now()
 			hour=now.hour
+			if(hour>12):
+				hour=hour-12
 			minute=now.minute
 			getText2VoiceStream("지금은"+str(hour)+"시"+str(minute)+"분 입니다", output_file)
 		else:
