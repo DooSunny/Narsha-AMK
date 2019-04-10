@@ -142,8 +142,6 @@ def Clock_minute(): # 시간 [분]
 	return now.minute
 
 #===========================================================================================================
-            
-
 def main():
 	output_file = "testtts.wav"
 	text=""
@@ -160,10 +158,10 @@ def main():
 
 		if("안녕" in text):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-		elif("이름" in text):
+		else if("이름" in text):
 			getText2VoiceStream("제 이름은 기가지니입니다.", output_file)
 
-		elif(("몇시" in text) or ("시간" in text) ):
+		else if(("몇시" in text) or ("시간" in txt) ):
 			hour=Clock_hour()
 			minute=Clock_minute()
 			getText2VoiceStream("지금은 "+hour+"시, "+str(minute)+"분 입니다.", output_file)
