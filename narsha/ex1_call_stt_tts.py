@@ -154,7 +154,7 @@ def main():
 
 		if(int(test_return) == 200):
 			text = getVoice2Text()
-			text=text.strip()
+			text=text.replace(" ","")
 			print("text : %s"%text)
 
 		text = text.encode("utf-8")
