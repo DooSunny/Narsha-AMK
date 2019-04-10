@@ -16,7 +16,7 @@ from ctypes import *
 import RPi.GPIO as GPIO
 import ktkws # KWS
 import MicrophoneStream as MS
-import unicodedata
+import datetime
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
 RATE = 16000
@@ -130,6 +130,18 @@ def getText2VoiceStream(inText,inFileName):
 	writeFile.close()
 	return response.resOptions.resultCd
 
+#==========================================================================================================
+# what time is it?
+def Clock_hour(): # 시간 [시]
+	time=["한","두","세","네","다섯","여섯","일곱","여덟","아홉","열","열한","열두"] # 만약 안해줄시 시간을 물을때 "한시"가 아니라 "일시"라고 대답한다
+	now=datetime.datetime.now()
+	return time[(now.hour -1)%12]
+
+def Clock_minute(): # 시간 [분]
+	now=datetime.datetime.now()
+	return now.minute
+
+#===========================================================================================================
 def main():
 	output_file = "testtts.wav"
 	text=""
@@ -138,18 +150,24 @@ def main():
 
 		if(int(test_return) == 200):
 			text = getVoice2Text()
+			text=text.replace(" ","")
 			print("text : %s"%text)
 
-		text = unicodedata.normalize('NFKD',text).encode('utf-8')
-		print("type : %s"%text)
+		text = text.encode("utf-8")
+		# print("type : %s" %type(text))
 
-
-		if(str(text) in "안녕"):
+		if("안녕" in text):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-		elif(text in "이름"):
-			getText2VoiceStream("제 이름은 기가지니입니다", output_file)
+		else if("이름" in text):
+			getText2VoiceStream("제 이름은 기가지니입니다.", output_file)
+
+		else if(("몇시" in text) or ("시간" in txt) ):
+			hour=Clock_hour()
+			minute=Clock_minute()
+			getText2VoiceStream("지금은 "+hour+"시, "+str(minute)+"분 입니다.", output_file)
+
 		else:
-			getText2VoiceStream("알아들을 수 가 없습니다.", output_file)
+			getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
 		MS.play_file(output_file)
 		text=""
