@@ -132,11 +132,9 @@ def getText2VoiceStream(inText,inFileName):
 
 #==========================================================================================================
 # what time is it?
-
 def Clock_hour(): # 시간 [시]
 	time=["한","두","세","네","다섯","여섯","일곱","여덟","아홉","열","열한","열두"] # 만약 안해줄시 시간을 물을때 "한시"가 아니라 "일시"라고 대답한다
 	now=datetime.datetime.now()
-
 	return time[(now.hour -1)%12]
 
 def Clock_minute(): # 시간 [분]
@@ -165,7 +163,7 @@ def main():
 		elif("이름" in text):
 			getText2VoiceStream("제 이름은 기가지니입니다.", output_file)
 
-		elif(("몇시" in text) or ("시간") in text ):
+		elif(("몇시" in text) or ("시간" in text) ):
 			hour=Clock_hour()
 			minute=Clock_minute()
 			getText2VoiceStream("지금은 "+hour+"시, "+str(minute)+"분 입니다.", output_file)
