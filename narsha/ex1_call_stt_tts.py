@@ -148,6 +148,7 @@ def main():
 
 		if("안녕" in text):
 			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
+			
 		elif("이름" in text):
 			getText2VoiceStream("제 이름은 기가지니입니다.", output_file)
 
