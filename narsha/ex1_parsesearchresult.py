@@ -1,19 +1,25 @@
+#-*-coding: utf-8
+
 import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
-
-url = "https://ko.wikipedia.org/wiki/"
-keyword = "대구소프트웨어고등학교"
+# import re
 
 def wikipediaparser(soup):
-    div = soup.find("div",{"class":"mw-parser-output"})
-    description = div.find_all("p")
-
+    results = soup.select(".mw-parser-output p")
+    text = results[0]
+    return text
 def main():
-    with urllib.request.urlopen(url + keyword) as response:
-     html = response.read()
-     soup = BeautifulSoup(html, 'html.parser')
-     wikipediaparser
+    url = "https://ko.wikipedia.org/wiki/"
+    keyword = "C++" # it will be changed to user-text
+    url = url + keyword    
+    response = urllib.request.urlopen(url)
+    html = response.read()
+    soup = BeautifulSoup(html, 'html.parser')
+    desc = wikipediaparser(soup)
+    if desc == []:
+        pass # will insert exception code
+
 
 if __name__ == '__main__':
     main()
