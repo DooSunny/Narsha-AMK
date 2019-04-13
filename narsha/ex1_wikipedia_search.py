@@ -30,17 +30,18 @@ def main():
     url = url + keyword    
     try:
         response = urllib.request.urlopen(url)
+        print("open url")
         html = response.read()
         soup = BeautifulSoup(html, 'html.parser')
         desc = wikipediaparser(soup)
         print(desc)
        
         if desc == None:
-            print("Something Wrong...") # exception code
+            print("오류코드 1", output_file) # exception code
         else:
             genie.getText2VoiceStream(desc, output_file)# giga-genie says something 
     except:
-        genie.getText2VoiceStream("오류가 발생했습니다",output_file) # giga-genie says something
+        genie.getText2VoiceStream("오류코드 2",output_file) # giga-genie says something
     MS.play_file(output_file)
 
 if __name__ == '__main__':
