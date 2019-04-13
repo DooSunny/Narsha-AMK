@@ -81,7 +81,7 @@ def generate_request():
             #print_rms(rms)
 
 def getVoice2Text():	
-    print ("\n\n음성인식을 시작합니다.\n\n종료하시려면 Ctrl+\ 키를 누루세요.\n\n\n")
+    print ("\n\n음성인식을 시작합니다.\n\n")  #\n종료하시려면 Ctrl+\ 키를 누루세요.\n\n
     channel = grpc.secure_channel('{}:{}'.format(HOST, PORT), UA.getCredentials())
     stub = gigagenieRPC_pb2_grpc.GigagenieStub(channel)
     request = generate_request()
@@ -130,5 +130,4 @@ def Call():
         text = getVoice2Text()
         text=text.replace(" ","")
 
-        text = text.encode("utf-8") #python2
         return text
