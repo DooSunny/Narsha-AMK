@@ -18,6 +18,13 @@ class question_db:
 
 class answer_db:
     database = []
+<<<<<<< HEAD
+    def increase_weight():
+        pass
+    def decrease_weight():
+        pass
+# I will fill this module file
+=======
     # 하나의  딕셔너리에 있는 모든 가중치의 합은 반드시 1이 되어야 함
     # 총 비율을 유지해야 한다는 뜻
     def weight_get(self, keyword): # get the weight of the keyword. 
@@ -30,3 +37,4 @@ class answer_db:
         return
     def keyword_delete(self, key): # delete keyword to dictionary. need a key to access dictionary
         return
+>>>>>>> 410581c3fdad63222098baf4dc4b6888d3e94ee3
