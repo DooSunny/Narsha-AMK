@@ -29,8 +29,9 @@ def main():
     keyword = urllib.parse.quote(keyword)
     url = url + keyword    
     try:
+        print("url open")
         response = urllib.request.urlopen(url)
-        print("open url")
+        print("url open complete")
         html = response.read()
         soup = BeautifulSoup(html, 'html.parser')
         desc = wikipediaparser(soup)
