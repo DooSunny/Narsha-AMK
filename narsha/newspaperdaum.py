@@ -20,8 +20,8 @@ import xml.etree.ElementTree as ET
 class news:
     url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
     urls = list()
-    def setarticle :
-        artic = print("어떤 종류의 뉴스를 보시겠어요?(종합, 연예, 스포츠, 사회, 정치, 경제, 국제, 문화, 연예, IT-과학")
+    def setarticle(artic) :
+        
         if(artic == '종합'):
             url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
         elif(artic == '연예'):
@@ -58,10 +58,12 @@ class news:
                     list.append(item.find('title').text)
                     urls.append(item.find('link').text)
                     #뉴스 150자 까지 불러오기
+        #for문 안에 넣어서 사용
         return titles
     # print(urls)
     def getnews(idx) :
         lang = Article(urls[int(idx)-1], language = 'ko')
         lang.download()
         lang.parse()
+        #print(lang.text[:(글자수)]) 로 사용
         return lang
