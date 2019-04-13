@@ -22,29 +22,29 @@ class news:
     urls = list()
     def setarticle(artic) :
         
-        if(artic == '종합'):
+        if(artic in '종합'):
             url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
-        elif(artic == '연예'):
+        elif(artic in '연예'):
             url = "http://media.daum.net/rss/today/primary/entertain/rss2.xml"
-        elif(artic == '스포츠'):
+        elif(artic in '스포츠'):
             url = "http://media.daum.net/rss/today/primary/sports/rss2.xml"
-        elif(artic == '사회'):
+        elif(artic in '사회'):
             url = "http://media.daum.net/rss/part/primary/society/rss2.xml"
-        elif(artic == '정치'):
+        elif(artic in '정치'):
             url = "http://media.daum.net/rss/part/primary/politics/rss2.xml"
-        elif(artic == '경제'):
+        elif(artic in '경제'):
             url = "http://media.daum.net/rss/part/primary/economic/rss2.xml"
-        elif(artic == '국제'):
+        elif(artic in '국제'):
             url = "http://media.daum.net/rss/part/primary/foreign/rss2.xml"
-        elif(artic == '문화'):
+        elif(artic in '문화'):
             url = "http://media.daum.net/rss/part/primary/culture/rss2.xml"
-        elif(artic == '연예'):
+        elif(artic in '연예'):
             url = "http://media.daum.net/rss/part/primary/entertain/rss2.xml"
-        elif(artic == 'IT'):
+        elif(artic in 'IT'):
             url = "http://media.daum.net/rss/part/primary/digital/rss2.xml"
-        elif(artic == '과학'):
+        elif(artic in '과학'):
             url = "http://media.daum.net/rss/part/primary/digital/rss2.xml"
-        elif(artic == 'IT-과학'):
+        elif(artic in 'IT-과학'):
             url = "http://media.daum.net/rss/part/primary/digital/rss2.xml"
         #주소의 xml을 불러온다
         xml = urllib.request.urlopen(url)
