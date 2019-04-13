@@ -2,7 +2,8 @@
 
 import urllib
 from bs4 import BeautifulSoup
-import ex1_call_stt_tts as genie
+import MicrophoneStream as MS
+import call_stt as genie
 
 # import re
 
@@ -24,7 +25,7 @@ def wikipediaparser(soup): # func about parse wikipedia
 def main():
     output_file = "testtts.wav"
     url = "https://ko.wikipedia.org/wiki/"
-    keyword = genie.getVoice2Text()
+    keyword = genie.Call()
     keyword = urllib.parse.quote(keyword)
     url = url + keyword    
     try:
@@ -39,9 +40,8 @@ def main():
         else:
             genie.getText2VoiceStream(desc, output_file)# giga-genie says something 
     except:
-        print("No search Result") # giga-genie says something
-
-
+        genie.getText2VoiceStream("오류가 발생했습니다",output_file) # giga-genie says something
+    MS.play_file(output_file)
 
 if __name__ == '__main__':
     main()
