@@ -20,8 +20,8 @@ import xml.etree.ElementTree as ET
 class news:
     url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
     urls = list()
-    def setarticle :
-        artic = print("어떤 종류의 뉴스를 보시겠어요?(종합, 연예, 스포츠, 사회, 정치, 경제, 국제, 문화, 연예, IT-과학")
+    def setarticle(artic) :
+        
         if(artic == '종합'):
             url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
         elif(artic == '연예'):
