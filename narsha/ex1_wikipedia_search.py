@@ -1,7 +1,6 @@
 #-*-coding: utf-8
 
-import urllib.request
-import urllib.parse
+import urllib
 from bs4 import BeautifulSoup
 import ex1_call_stt_tts as genie
 
