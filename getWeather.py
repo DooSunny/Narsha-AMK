@@ -1,4 +1,5 @@
 from pyowm import OWM
+
 API_Key = '514fe4395b0b19b155eab8f4e4e150cc'
 owm = OWM(API_Key)
 
@@ -17,7 +18,7 @@ Url = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpac
 Service_key = "serviceKey=" +"64QV0MQgjFD8HAnIKbqBycsrsYDMDELB1D3FZu6Nw3K7XVNkdflOhG%2Bm3wga8323saA7yX0K6HHD4HANv9i11w%3D%3D" +"&";
 
 Date = "base_date=" +datetime.today().strftime("%Y%m%d") +"&"
-
+ ## -> 2019년 4월 11일 일때 20190411 반환
 tempTime = ""#정시로 마추기
 ##Time = "base_time=" +tempTime +"&"
 ##2, 5, 8, 11, 14, 17, 20, 23 -> 업데이트 타임
