@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""Example 1: GiGA Genie Keyword Spotting"""
-
-from __future__ import print_function
-
 import grpc
 import gigagenieRPC_pb2
 import gigagenieRPC_pb2_grpc
@@ -17,7 +10,19 @@ import RPi.GPIO as GPIO
 import ktkws # KWS
 import MicrophoneStream as MS
 import datetime
-import chatbot_module as cb
+
+def test(key_word = '기가지니'):
+	rc = ktkws.init("../data/kwsmodel.pack")
+	print ('init rc = %d' % (rc))
+	rc = ktkws.start()
+	print ('start rc = %d' % (rc))
+	print ('\n호출어를 불러보세요~\n')
+	ktkws.set_keyword(KWSID.index(key_word))
+	rc = detect()
+	print ('detect rc = %d' % (rc))
+	print ('\n\n호출어가 정상적으로 인식되었습니다.\n\n')
+	ktkws.stop()
+	return rc
 
 KWSID = ['기가지니', '지니야', '친구야', '자기야']
 RATE = 16000
@@ -62,19 +67,6 @@ def detect():
 			if (rc == 1):
 				MS.play_file("../data/sample_sound.wav")
 				return 200
-
-def test(key_word = '기가지니'):
-	rc = ktkws.init("../data/kwsmodel.pack")
-	print ('init rc = %d' % (rc))
-	rc = ktkws.start()
-	print ('start rc = %d' % (rc))
-	print ('\n호출어를 불러보세요~\n')
-	ktkws.set_keyword(KWSID.index(key_word))
-	rc = detect()
-	print ('detect rc = %d' % (rc))
-	print ('\n\n호출어가 정상적으로 인식되었습니다.\n\n')
-	ktkws.stop()
-	return rc
 
 def generate_request():
     with MS.MicrophoneStream(RATE, CHUNK) as stream:
@@ -131,30 +123,12 @@ def getText2VoiceStream(inText,inFileName):
 	writeFile.close()
 	return response.resOptions.resultCd
 
-#==========================================================================================================
+def Call():
+    test_return = test()
 
-#===========================================================================================================
-def main():
-	output_file = "testtts.wav"
-	text=""
-	while True :
-		test_return = test()
+    if(int(test_return) == 200):
+        text = getVoice2Text()
+        text=text.replace(" ","")
 
-		if(int(test_return) == 200):
-			text = getVoice2Text()
-			text=text.replace(" ","")
-			print("text : %s"%text)
-
-		text = text.encode("utf-8")
-		# print("type : %s" %type(text))
-
-		if("안녕" in text):
-			getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-		elif("이름" in text):
-			getText2VoiceStream("제 이름은 기가지니입니다.", output_file)
-
-		MS.play_file(output_file) # play voice file
-		text=""
-
-if __name__ == '__main__':
-	main()
+        text = text.encode("utf-8") #python2
+        return text
