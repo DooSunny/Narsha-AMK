@@ -58,10 +58,12 @@ class news:
                     list.append(item.find('title').text)
                     urls.append(item.find('link').text)
                     #뉴스 150자 까지 불러오기
+        #for문 안에 넣어서 사용
         return titles
     # print(urls)
     def getnews(idx) :
         lang = Article(urls[int(idx)-1], language = 'ko')
         lang.download()
         lang.parse()
+        #print(lang.text[:(글자수)]) 로 사용
         return lang
