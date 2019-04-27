@@ -1,8 +1,5 @@
 from pyowm import OWM
 
-def getLocate():
-    
-
 def getWeater():
     API_Key = '514fe4395b0b19b155eab8f4e4e150cc'
     owm = OWM(API_Key)
