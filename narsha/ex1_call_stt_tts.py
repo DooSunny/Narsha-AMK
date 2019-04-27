@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """Example 1: GiGA Genie Keyword Spotting"""
-from __future__ import print_functions
 import MicrophoneStream as MS
 import ex1_Clock
 import call_stt
-import newspaperdaum
+# import newspaperdaum
 
 def main():
 	output_file = "testtts.wav"
