@@ -23,8 +23,6 @@ def main():
 			minute=ex1_Clock.Clock_minute()
 			call_stt.getText2VoiceStream("지금은 "+hour+"시, "+str(minute)+"분 입니다.", output_file)
 		elif("뉴스" in text):
-			call_stt.getText2VoiceStream("어떤 뉴스를 들으실래요?",output_file)
-			text1 = call_stt.Call()
 			for title in news.newspaperdaum.setarticle(news.newspaperdaum,text1):
 				call_stt.getText2VoiceStream(title,output_file)
 				MS.play_file(output_file)
