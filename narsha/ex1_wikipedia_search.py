@@ -26,8 +26,7 @@ def main():
     output_file = "testtts.wav"
     url = "https://ko.wikipedia.org/wiki/"
     keyword = genie.Call()
-    keyword = urllib.parse.quote(keyword)
-    url = url + keyword    
+    url = url + keyword
     urllib.parse.urlencode(url, doseq = True)
     print(url)
     try:
