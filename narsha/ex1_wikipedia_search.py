@@ -27,9 +27,10 @@ def main():
     url = "https://ko.wikipedia.org/wiki/"
     keyword = genie.Call()
     url = url + keyword
-    url = urllib.parse.urlparse(url)
-    url = urllib.parse.parse_qs(url.query)
-    urllib.parse.urlencode(url, encoding='UTF-8', doseq = True)
+   #  url = urllib.parse.urlparse(url)
+    # url = urllib.parse.parse_qs(url.query)
+    # urllib.parse.urlencode(url, encoding='UTF-8', doseq = True)
+    url = urillb.parse.quote(url)
     try:
         print("url open")
         response = urllib.request.urlopen(url)
