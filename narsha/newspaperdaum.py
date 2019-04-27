@@ -19,7 +19,7 @@ import random
 class newspaperdaum:
     url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
     urls = list()
-    def setarticle(self,artic) :
+    def setarticle(self,) :
         
         # if('종합' in artic):
         #     self.url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
