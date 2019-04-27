@@ -42,7 +42,7 @@ def main():
         print(desc)
        
         if desc == None:
-            print("오류코드 1", output_file) # exception code
+            genie.getText2VoiceStream("오류코드 1", output_file) # exception code
         else:
             genie.getText2VoiceStream(desc, output_file)# giga-genie says something 
     except HTTPError as e:
