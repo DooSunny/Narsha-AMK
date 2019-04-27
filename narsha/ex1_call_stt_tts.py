@@ -27,8 +27,10 @@ def main():
 			text1 = call_stt.Call()
 			for title in news.newspaperdaum.setarticle(news.newspaperdaum,text1):
 				call_stt.getText2VoiceStream(title,output_file)
+				MS.play_file(output_file)
 				for result in news.newspaperdaum.getnews(news.newspaperdaum):
-					print(result.text)
+					call_stt.getText2VoiceStream(result.text,output_file)
+					MS.play_file(output_file)
 					i+=1
 					if i>2:
 						print("\n")
