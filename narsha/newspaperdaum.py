@@ -61,7 +61,7 @@ class newspaperdaum:
         return titles
     # print(urls)
     def getnews(self) :
-        url = randomurl = random.choice(urls)
+        url = randomurl = random.choice(self.urls)
         response=urllib.request.urlopen(url)
         soup=BeautifulSoup(response,'html.parser')
         results = soup.select("section > p")
