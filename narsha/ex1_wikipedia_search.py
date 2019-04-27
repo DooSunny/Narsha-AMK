@@ -30,7 +30,7 @@ def main():
    #  url = urllib.parse.urlparse(url)
     # url = urllib.parse.parse_qs(url.query)
     # urllib.parse.urlencode(url, encoding='UTF-8', doseq = True)
-    url = urillb.parse.quote(url)
+    url = urllib.parse.quote(url)
     try:
         print("url open")
         response = urllib.request.urlopen(url)
