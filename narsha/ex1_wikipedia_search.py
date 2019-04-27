@@ -1,7 +1,7 @@
 #-*-coding: utf-8
 
 import urllib
-from urllib.parse import urlencode
+from urllib.parse import quote
 from bs4 import BeautifulSoup
 import MicrophoneStream as MS
 import call_stt as genie
@@ -27,7 +27,7 @@ def main():
     output_file = "testtts.wav"
     url = "https://ko.wikipedia.org/wiki/"
     keyword = genie.Call()
-    url = url + urlencode(keyword)
+    url = url + quote(keyword)
    #  url = urllib.parse.urlparse(url)
     # url = urllib.parse.parse_qs(url.query)
     # urllib.parse.urlencode(url, encoding='UTF-8', doseq = True)
