@@ -28,6 +28,7 @@ def main():
     keyword = genie.Call()
     keyword = urllib.parse.quote(keyword)
     url = url + keyword    
+    parse.urlencode(url, doseq = True)
     print(url)
     try:
         print("url open")
