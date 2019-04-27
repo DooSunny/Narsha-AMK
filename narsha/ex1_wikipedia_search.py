@@ -1,5 +1,6 @@
 #-*-coding: utf-8
 
+from  urllib.error import HTTPError;
 from urllib.parse import quote
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
@@ -44,8 +45,9 @@ def main():
             print("오류코드 1", output_file) # exception code
         else:
             genie.getText2VoiceStream(desc, output_file)# giga-genie says something 
-    except Exception as e:
-        genie.getText2VoiceStream("오류코드 2",output_file) # giga-genie says something
+    except HTTPError as e:
+        if e.code == 404:
+            genie.getText2VoiceStream("위키피디아에서 찾을 수 없어요", output_file)
         print(e)
     MS.play_file(output_file)
 
