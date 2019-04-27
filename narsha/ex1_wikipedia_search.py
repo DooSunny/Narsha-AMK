@@ -1,7 +1,7 @@
 #-*-coding: utf-8
 
-import urllib
 from urllib.parse import quote
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import MicrophoneStream as MS
 import call_stt as genie
@@ -31,10 +31,9 @@ def main():
    #  url = urllib.parse.urlparse(url)
     # url = urllib.parse.parse_qs(url.query)
     # urllib.parse.urlencode(url, encoding='UTF-8', doseq = True)
-    url = urllib.parse.quote(url)
     try:
         print("url open")
-        response = urllib.request.urlopen(url)
+        response = urlopen(url)
         print("url open complete")
         html = response.read()
         soup = BeautifulSoup(html, 'html.parser')
@@ -45,8 +44,9 @@ def main():
             print("오류코드 1", output_file) # exception code
         else:
             genie.getText2VoiceStream(desc, output_file)# giga-genie says something 
-    except:
+    except Exception as e:
         genie.getText2VoiceStream("오류코드 2",output_file) # giga-genie says something
+        print(e)
     MS.play_file(output_file)
 
 if __name__ == '__main__':
