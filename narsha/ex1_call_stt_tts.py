@@ -5,13 +5,14 @@
 import MicrophoneStream as MS
 import ex1_Clock
 import call_stt
+import newspaperdaum as news
 # import newspaperdaum
 
 def main():
 	output_file = "testtts.wav"
+	i=0
 	while True :
 		text=call_stt.Call()
-		news = newspaperdaum()
 		if("안녕" in text):
 			call_stt.getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
 		elif("이름" in text):
@@ -24,8 +25,14 @@ def main():
 		elif("뉴스" in text):
 			call_stt.getText2VoiceStream("어떤 뉴스를 들으실래요?",output_file)
 			text1 = call_stt.Call()
-			for title in news.setarticle(text1):
+			for title in news.newspaperdaum.setarticle(news.newspaperdaum,text1):
 				call_stt.getText2VoiceStream(title,output_file)
+				for result in news.newspaperdaum.getnews(news.newspaperdaum):
+					print(result.text)
+					i+=1
+					if i>2:
+						print("\n")
+						break
 		else:
 			call_stt.getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
