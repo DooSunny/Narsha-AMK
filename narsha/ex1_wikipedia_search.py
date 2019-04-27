@@ -27,6 +27,8 @@ def main():
     url = "https://ko.wikipedia.org/wiki/"
     keyword = genie.Call()
     url = url + keyword
+    url = urllib.parse.urlparse(url)
+    url = urllib.parse.parse_qs(url.query)
     urllib.parse.urlencode(url, doseq = True)
     print(url)
     try:
