@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 import  urllib.request
 import urllib.parse
 
+i=0
 url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
 urls = list()
 xml = urllib.request.urlopen(url)
@@ -22,3 +23,7 @@ for url in urls :
     results = soup.select("section > p")
     for result in results :
         print(result.text)
+        i+=1
+        if i>2:
+            print("\n")
+            break
