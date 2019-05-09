@@ -16,33 +16,24 @@ locationNY = "ny=86&"
 
 def getWeather2():
 
-    초단기실황url = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?"
-    초단기예보url = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastTimeData?"
-    동네예보url =   "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
+    shortTermForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?"
+    townForecastUrl =   "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
     service_Key = "serviceKey=" +"64QV0MQgjFD8HAnIKbqBycsrsYDMDELB1D3FZu6Nw3K7XVNkdflOhG%2Bm3wga8323saA7yX0K6HHD4HANv9i11w%3D%3D" +"&"
     date = "base_date=" +datetime.today().strftime("%Y%m%d") +"&" ## -> 2019년 4월 11일 일때 20190411 반환
-
     type = "_type=json"
 
-    rest1 = 동네예보url+service_Key+date+getUpdateTime1()+locationNX+locationNY+type 
-    a = parse(rest1)
-    # if(a['category'] == 'POP')
-    #     print (a['fcstValue'])
-    print (a)
-    print("\n")
-    rest2 = 초단기실황url+service_Key+date+getUpdateTime2()+locationNX+locationNY+type 
-    b = parse(rest2)
-    print(b)
-    print("\n")
-    rest3 = 초단기예보url+service_Key+date+getUpdateTime2()+locationNX+locationNY+type 
-    c = parse(rest3)
-    print(c)
+    townRest = townForecastUrl+service_Key+date+getUpdateTime1()+locationNX+locationNY+type  #POP 강수확률
+    restTemp = parse(townRest)
+    print ("오늘의 강수확률 : ", restTemp['response']['body']['items']['item'][0]['fcstValue'])
+
+    shortRest = shortTermForecastUrl+service_Key+date+getUpdateTime2()+locationNX+locationNY+type #T1H 기온, REH 습도
+    restTemp = parse(shortRest)
+    print("현재 습도 : ", restTemp['response']['body']['items']['item'][1]['obsrValue'], "% \n", "현재 온도 : ", restTemp['response']['body']['items']['item'][3]['obsrValue'], "`C" ) 
 
 def parse(url):
     
     response = requests.get(url)
     getJson = json.loads(response.text)
-    #print(getJson)
     return getJson
 
 def getUpdateTime1(): #동네예보 api 업데이트 타임
