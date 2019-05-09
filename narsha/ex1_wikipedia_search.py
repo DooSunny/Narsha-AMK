@@ -1,6 +1,8 @@
 #-*-coding: utf-8
 
-import urllib
+from  urllib.error import HTTPError;
+from urllib.parse import quote
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import MicrophoneStream as MS
 import call_stt as genie
@@ -26,12 +28,13 @@ def main():
     output_file = "testtts.wav"
     url = "https://ko.wikipedia.org/wiki/"
     keyword = genie.Call()
-    keyword = urllib.parse.quote(keyword)
-    url = url + keyword    
-    print(url)
+    url = url + quote(keyword)
+   #  url = urllib.parse.urlparse(url)
+    # url = urllib.parse.parse_qs(url.query)
+    # urllib.parse.urlencode(url, encoding='UTF-8', doseq = True)
     try:
         print("url open")
-        response = urllib.request.urlopen(url)
+        response = urlopen(url)
         print("url open complete")
         html = response.read()
         soup = BeautifulSoup(html, 'html.parser')
@@ -39,11 +42,13 @@ def main():
         print(desc)
        
         if desc == None:
-            print("오류코드 1", output_file) # exception code
+            genie.getText2VoiceStream("오류코드 1", output_file) # exception code
         else:
             genie.getText2VoiceStream(desc, output_file)# giga-genie says something 
-    except:
-        genie.getText2VoiceStream("오류코드 2",output_file) # giga-genie says something
+    except HTTPError as e:
+        if e.code == 404:
+            genie.getText2VoiceStream("위키피디아에서 찾을 수 없어요", output_file)
+        print(e)
     MS.play_file(output_file)
 
 if __name__ == '__main__':
