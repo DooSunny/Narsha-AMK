@@ -2,13 +2,42 @@ from datetime import datetime  #년, 월, 일, 시, 분, 초 등등 가져올 �
 import json #json 데이터를 가공할 수 있는 라이브러리
 import requests
 
-locationNX = "nx=86&"
-locationNY = "ny=86&"
+locationNX = ""
+locationNY = ""
 
-def getWeather2():
+def getWeather(location):
+
+    if(location == "서울"):
+        self.locationNX = 60
+        self.locationNY = 127
+    elif(location == "대전"):
+        self.locationNX = 67
+        self.locationNY = 100
+    elif(location == "세종"):
+        self.locationNX = 66
+        self.locationNY = 103
+    elif(location == "광주"):
+        self.locationNX = 58
+        self.locationNY = 74
+    elif(location == "울산"):
+        self.locationNX = 102
+        self.locationNY = 84
+    elif(location == "대구"):
+        self.locationNX = 89
+        self.locationNY = 90
+    elif(location == "부산"):
+        self.locationNX = 98
+        self.locationNY = 76
+    elif(location == "제주"):
+        self.locationNX = 52
+        self.locationNY = 38
+
+    transmitToAPI(self.locationNX, self.locationNY)
+
+def transmitToAPI(locationNX, locationNY):
 
     shortTermForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?"
-    townForecastUrl =   "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
+    townForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
     service_Key = "serviceKey=" +"64QV0MQgjFD8HAnIKbqBycsrsYDMDELB1D3FZu6Nw3K7XVNkdflOhG%2Bm3wga8323saA7yX0K6HHD4HANv9i11w%3D%3D" +"&"
     date = "base_date=" +datetime.today().strftime("%Y%m%d") +"&" ## -> 2019년 4월 11일 일때 20190411 반환
     type = "_type=json"
