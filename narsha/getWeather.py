@@ -1,18 +1,9 @@
 from datetime import datetime  #년, 월, 일, 시, 분, 초 등등 가져올 수 있는 라이브러리
 import json #json 데이터를 가공할 수 있는 라이브러리
 import requests
-#위치는 stt연동시 하갔음 지금은 달성군
+
 locationNX = "nx=86&"
 locationNY = "ny=86&"
-
-# def voice():
-
-#     if(v == "deagu"):
-#         locationNX = "nx=86&"
-#         locationNY = "ny=86&"
-#     if(v == "sad"):
-#         locationNX = "nx=86&"
-#         locationNY = "ny=86&"
 
 def getWeather2():
 
@@ -24,12 +15,13 @@ def getWeather2():
 
     townRest = townForecastUrl+service_Key+date+getUpdateTime1()+locationNX+locationNY+type  #POP 강수확률
     restTemp = parse(townRest)
-    print ("오늘의 강수확률 : ", restTemp['response']['body']['items']['item'][0]['fcstValue'])
+    print ("오늘의 강수확률 : ", restTemp['response']['body']['items']['item'][0]['fcstValue'], "%")
 
     shortRest = shortTermForecastUrl+service_Key+date+getUpdateTime2()+locationNX+locationNY+type #T1H 기온, REH 습도
     restTemp = parse(shortRest)
-    print("현재 습도 : ", restTemp['response']['body']['items']['item'][1]['obsrValue'], "% \n", "현재 온도 : ", restTemp['response']['body']['items']['item'][3]['obsrValue'], "`C" ) 
-
+    print("현재 온도 : ", restTemp['response']['body']['items']['item'][3]['obsrValue'], "˙C") 
+    print("현재 습도 : ", restTemp['response']['body']['items']['item'][1]['obsrValue'], "%")
+    
 def parse(url):
     
     response = requests.get(url)
