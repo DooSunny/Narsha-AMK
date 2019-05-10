@@ -6,6 +6,7 @@ import MicrophoneStream as MS
 import ex1_Clock
 import call_stt
 import newspaperdaum as news
+import ex1_getWeather as weather
 # import newspaperdaum
 
 def main():
@@ -32,7 +33,9 @@ def main():
 					i+=1
 					if i>2:
 						print("\n")
-						break
+						break 
+		elif("날씨" in text):
+			weather.getWeather("")
 		else:
 			call_stt.getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
