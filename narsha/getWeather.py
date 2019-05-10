@@ -32,9 +32,9 @@ def getWeather(location):
         self.locationNX = 52
         self.locationNY = 38
 
-    transmitToAPI(self.locationNX, self.locationNY)
+    transmitToAPI()
 
-def transmitToAPI(locationNX, locationNY):
+def transmitToAPI():
 
     shortTermForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?"
     townForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
@@ -46,7 +46,7 @@ def transmitToAPI(locationNX, locationNY):
     restTemp = parse(townRest)
     print ("오늘의 강수확률 : ", restTemp['response']['body']['items']['item'][0]['fcstValue'], "%")
 
-    shortRest = shortTermForecastUrl+service_Key+date+getUpdateTime2()+locationNX+locationNY+type #T1H 기온, REH 습도
+    shortRest = shortTermForecastUrl+service_Key+date+getUpdateTime2()+self.locationNX+self.locationNY+type #T1H 기온, REH 습도
     restTemp = parse(shortRest)
     print("현재 온도 : ", restTemp['response']['body']['items']['item'][3]['obsrValue'], "˙C") 
     print("현재 습도 : ", restTemp['response']['body']['items']['item'][1]['obsrValue'], "%")
