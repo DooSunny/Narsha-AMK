@@ -40,17 +40,24 @@ def transmitToAPI(NX, NY):
     townForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
     service_Key = "serviceKey=" +"64QV0MQgjFD8HAnIKbqBycsrsYDMDELB1D3FZu6Nw3K7XVNkdflOhG%2Bm3wga8323saA7yX0K6HHD4HANv9i11w%3D%3D" +"&"
     date = "base_date=" +datetime.today().strftime("%Y%m%d") +"&" 
-    type = "&_type=json"
-
     nx = "nx=" +NX
     ny = "&ny=" +NY
+    type = "&_type=json"
 
-    restTemp = parse(townForecastUrl+service_Key+date+getUpdateTime1()+nx+ny+type)
-    print ("오늘의 강수확률 : ", restTemp['response']['body']['items']['item'][0]['fcstValue'], "%")
+    temp1 = parse(shortTermForecastUrl+service_Key+date+getUpdateTime2()+nx+ny+type)
+    temp2 = parse(townForecastUrl+service_Key+date+getUpdateTime1()+nx+ny+type)
+    
+    returnString = "현재 온도는 "
+    returnString += str(temp1['response']['body']['items']['item'][3]['obsrValue'])
+    returnString +="도이고 "
+    returnString += "습도는 "
+    returnString += str(temp1['response']['body']['items']['item'][1]['obsrValue'])
+    returnString += "퍼센트이며 "
+    returnString += "오늘의 강수확률은 "
+    returnString += str(temp2['response']['body']['items']['item'][0]['fcstValue'])
+    returnString += "퍼센트입니다"
 
-    restTemp = parse(shortTermForecastUrl+service_Key+date+getUpdateTime2()+nx+ny+type)
-    print("현재 온도 : ", restTemp['response']['body']['items']['item'][3]['obsrValue'], "˙C") 
-    print("현재 습도 : ", restTemp['response']['body']['items']['item'][1]['obsrValue'], "%")
+    return returnString
     
 def parse(url):
     
@@ -91,5 +98,3 @@ def getUpdateTime2():
         currentHour -= 1;
     
     return "base_time=" +str(currentHour) +"30&"
-
-getWeather('대구')

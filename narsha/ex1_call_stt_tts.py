@@ -35,14 +35,14 @@ def main():
 						print("\n")
 						break 
 		elif("날씨" in text):
-			if("서울" in text): weather.getWeather("서울")
-			elif("대전" in text): weather.getWeather("대전")
-			elif("세종" in text): weather.getWeather("세종")
-			elif("광주" in text): weather.getWeather("광주")
-			elif("대구" in text): weather.getWeather("대구")
-			elif("울산" in text): weather.getWeather("울산")
-			elif("부산" in text): weather.getWeather("부산")
-			elif("제주" in text): weather.getWeather("제주")		
+			if("서울" in text): call_stt.getText2VoiceStream(weather.getWeather("서울"), output_file)
+			elif("대전" in text): call_stt.getText2VoiceStream(weather.getWeather("대전"), output_file)
+			elif("세종" in text): call_stt.getText2VoiceStream(weather.getWeather("세종"), output_file)
+			elif("광주" in text): call_stt.getText2VoiceStream(weather.getWeather("광주"), output_file)
+			elif("대구" in text): call_stt.getText2VoiceStream(weather.getWeather("대구"), output_file)
+			elif("울산" in text): call_stt.getText2VoiceStream(weather.getWeather("울산"), output_file)
+			elif("부산" in text): call_stt.getText2VoiceStream(weather.getWeather("부산"), output_file)
+			elif("제주" in text): call_stt.getText2VoiceStream(weather.getWeather("제주"), output_file)		
 			else: call_stt.getText2VoiceStream("현재는 특별시 광역시 자치도의 조회만 가능합니다", output_file)
 								
 		else:
