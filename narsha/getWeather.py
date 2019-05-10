@@ -2,62 +2,63 @@ from datetime import datetime  #년, 월, 일, 시, 분, 초 등등 가져올 �
 import json #json 데이터를 가공할 수 있는 라이브러리
 import requests
 
-locationNX = ""
-locationNY = ""
-
 def getWeather(location):
 
+    locationNX = '89'
+    locationNY = '89'
+
     if(location == "서울"):
-        self.locationNX = 60
-        self.locationNY = 127
+        locationNX = '60'
+        locationNY = '127'
     elif(location == "대전"):
-        self.locationNX = 67
-        self.locationNY = 100
+        locationNX = '67'
+        locationNY = '100'
     elif(location == "세종"):
-        self.locationNX = 66
-        self.locationNY = 103
+        locationNX = '66'
+        locationNY = '103'
     elif(location == "광주"):
-        self.locationNX = 58
-        self.locationNY = 74
+        locationNX = '58'
+        locationNY = '74'
     elif(location == "울산"):
-        self.locationNX = 102
-        self.locationNY = 84
+        locationNX = '102'
+        locationNY = '84'
     elif(location == "대구"):
-        self.locationNX = 89
-        self.locationNY = 90
+        locationNX = '89'
+        locationNY = '90'
     elif(location == "부산"):
-        self.locationNX = 98
-        self.locationNY = 76
+        locationNX = '98'
+        locationNY = '76'
     elif(location == "제주"):
-        self.locationNX = 52
-        self.locationNY = 38
+        locationNX = '52'
+        locationNY = '38'
 
-    transmitToAPI()
+    transmitToAPI(locationNX, locationNY)
 
-def transmitToAPI():
+def transmitToAPI(NX, NY):
 
     shortTermForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastGrib?"
     townForecastUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
     service_Key = "serviceKey=" +"64QV0MQgjFD8HAnIKbqBycsrsYDMDELB1D3FZu6Nw3K7XVNkdflOhG%2Bm3wga8323saA7yX0K6HHD4HANv9i11w%3D%3D" +"&"
-    date = "base_date=" +datetime.today().strftime("%Y%m%d") +"&" ## -> 2019년 4월 11일 일때 20190411 반환
-    type = "_type=json"
+    date = "base_date=" +datetime.today().strftime("%Y%m%d") +"&" 
+    type = "&_type=json"
 
-    townRest = townForecastUrl+service_Key+date+getUpdateTime1()+locationNX+locationNY+type  #POP 강수확률
-    restTemp = parse(townRest)
+    nx = "nx=" +NX
+    ny = "&ny=" +NY
+
+    restTemp = parse(townForecastUrl+service_Key+date+getUpdateTime1()+nx+ny+type)
     print ("오늘의 강수확률 : ", restTemp['response']['body']['items']['item'][0]['fcstValue'], "%")
 
-    shortRest = shortTermForecastUrl+service_Key+date+getUpdateTime2()+self.locationNX+self.locationNY+type #T1H 기온, REH 습도
-    restTemp = parse(shortRest)
+    restTemp = parse(shortTermForecastUrl+service_Key+date+getUpdateTime2()+nx+ny+type)
     print("현재 온도 : ", restTemp['response']['body']['items']['item'][3]['obsrValue'], "˙C") 
     print("현재 습도 : ", restTemp['response']['body']['items']['item'][1]['obsrValue'], "%")
     
 def parse(url):
     
     response = requests.get(url)
-    getJson = json.loads(response.text)
-    return getJson
+    getData = json.loads(response.text)
+    return getData
 
-def getUpdateTime1(): #동네예보 api 업데이트 타임
+def getUpdateTime1(): 
 
     currentHour = datetime.today().hour
     updateTime = ""
@@ -90,8 +91,6 @@ def getUpdateTime2():
         currentHour -= 1;
     
     return "base_time=" +str(currentHour) +"30&"
-# def toString():
-#     sadasd
 
-getWeather2()
-
+getWeather('대구')
+#transmitToAPI('89', '89')
