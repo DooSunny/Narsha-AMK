@@ -93,4 +93,3 @@ def getUpdateTime2():
     return "base_time=" +str(currentHour) +"30&"
 
 getWeather('대구')
-#transmitToAPI('89', '89')
