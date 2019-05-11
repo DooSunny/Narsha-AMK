@@ -32,7 +32,7 @@ def getWeather(location):
         locationNX = '52'
         locationNY = '38'
 
-    transmitToAPI(locationNX, locationNY)
+    return (transmitToAPI(locationNX, locationNY))
 
 def transmitToAPI(NX, NY):
 
