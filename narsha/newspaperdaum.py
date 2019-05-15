@@ -19,7 +19,7 @@ import random
 class newspaperdaum:
     url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
     urls = list()
-    def setarticle(self,artic) :
+    def setarticle(self,) :
         
         # if('종합' in artic):
         #     self.url = "http://media.daum.net/rss/today/primary/all/rss2.xml"
@@ -61,7 +61,7 @@ class newspaperdaum:
         return titles
     # print(urls)
     def getnews(self) :
-        url = randomurl = random.choice(urls)
+        url = randomurl = random.choice(self.urls)
         response=urllib.request.urlopen(url)
         soup=BeautifulSoup(response,'html.parser')
         results = soup.select("section > p")
