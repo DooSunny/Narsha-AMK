@@ -1,10 +1,12 @@
-import medicine as med
+import medicine from medicine
 import call_stt
 import threading
-import re.
+import re
 
-def main():
-	t1 = threading.Thread(target = calling)
+
+
+def main(med):
+	t1 = threading.Thread(target = calling,med)
 	output_file = "testtts.wav"
 	i=0
 	while True :
@@ -12,22 +14,22 @@ def main():
 		lc = 1
 		dn = 1
 		now=datetime.datetime.now()
-		if (med.breakfirst == now. our):
-			if (medbreakfirstminute == now.minute):
+		if (med.breakfirst == now.hour):
+			if (med.breakfirstminute == now.minute):
 				if (bf == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("아침약 먹을 시간입니다.", output_file)
 		elif (med.launch == now.hour):
-			if (medbreakfirstminute == now.minute):
+			if (med.launchminute == now.minute):
 				if (lc == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("점심약 먹을 시간입니다.", output_file)
 		elif (med.dinner == now.hour):
-			if (meddinnerminute == now.minute):
+			if (med.dinnerminute == now.minute):
 				if (dn == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("저녁약 먹을 시간입니다.", output_file)
-def calling():
+def calling(med):
 	while True :
 		text=call_stt.Call()
 		if (아침 in text):
@@ -35,7 +37,7 @@ def calling():
 			print(numbers)
 			if((오후 in text) or (numbers[0] > 12)):
 				med.setbreakfirst(med.medicine,numbers[0],1)
-			else
+			else:
 				med.setbreakfirst(med.medicine,numbers[0],0)
 			if(분 in text):
 				med.setbreakfirstminute(med.medicine,numbers[1])
@@ -44,7 +46,7 @@ def calling():
 			print(numbers)
 			if((오후 in text) or (numbers[0] > 12)):
 				med.setlaunch(med.medicine,numbers[0],1)
-			else
+			else:
 				med.setlaunch(med.medicine,numbers[0],0)
 			if(분 in text):
 				med.setlaunchminute(med.medicine,numbers[1])
@@ -53,7 +55,7 @@ def calling():
 			print(numbers)
 			if((오후 in text) or (numbers[0] > 12)):
 				med.setdinner(med.medicine,numbers[0],1)
-			else
+			else:
 				med.setdinner(med.medicine,numbers[0],0)
 			if(분 in text):
 				med.setdinnerminute(med.medicine,numbers[1])
@@ -65,4 +67,5 @@ def calling():
 
 
 if __name__ == '__main__':
-	main()
+	med = medicine()
+	main(med)
