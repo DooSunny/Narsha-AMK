@@ -40,7 +40,7 @@ def calling(med):
 			print(type(numbers))
 			print(type(text))
 			print(type("오후"in text))
-			if(("오후" in text) or (int(numbers[0])> 12)):
+			if(("오후" in text)):
 				med.setbreakfirst(int(numbers[0]),1)
 				call_stt.getText2VoiceStream("아침을 "+(int(numbers[0])+12)+"시로 변경하였습니다.", output_file)
 			else:
@@ -52,7 +52,7 @@ def calling(med):
 		elif("점심" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
-			if(("오후" in text) or (int(numbers[0]) > 12)):
+			if(("오후" in text)):
 				med.setlaunch(int(numbers[0]),1)
 				call_stt.getText2VoiceStream("점심을 "+(int(numbers[0])+12)+"시로 변경하였습니다.", output_file)
 			else:
@@ -64,7 +64,7 @@ def calling(med):
 		elif ("저녁" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
-			if(("오후" in text) or (numbers[0] > 12)):
+			if(("오후" in text)):
 				med.setdinner(int(numbers[0]),1)
 				call_stt.getText2VoiceStream("저녁을 "+(int(numbers[0])+12)+"시로 변경하였습니다.", output_file)
 			else:
