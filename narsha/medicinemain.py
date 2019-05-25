@@ -3,10 +3,8 @@ import call_stt
 import threading
 import re
 
-
-
 def main(med):
-	t1 = threading.Thread(target = calling,med)
+	t1 = threading.Thread(target = calling,args=(med))
 	output_file = "testtts.wav"
 	i=0
 	while True :
