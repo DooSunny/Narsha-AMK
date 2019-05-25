@@ -2,6 +2,10 @@ import medicine from medicine
 import call_stt
 import threading
 import re
+<<<<<<< HEAD
+=======
+import datetime
+>>>>>>> db86035d37985d63034c6af3e37b32dffcebda00
 
 def main(med):
 	t1 = threading.Thread(target = calling,args=(med))
@@ -13,7 +17,11 @@ def main(med):
 		dn = 1
 		now=datetime.datetime.now()
 		if (med.breakfirst == now.hour):
+<<<<<<< HEAD
 			if (med.breakfirstminute == now.minute):
+=======
+			if (medbreakfirstminute == now.minute):
+>>>>>>> db86035d37985d63034c6af3e37b32dffcebda00
 				if (bf == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("아침약 먹을 시간입니다.", output_file)
