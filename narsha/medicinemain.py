@@ -1,7 +1,8 @@
 import medicine as med
 import call_stt
 import threading
-import re
+import re.
+
 def main():
 	t1 = threading.Thread(target = calling)
 	output_file = "testtts.wav"
@@ -11,7 +12,7 @@ def main():
 		lc = 1
 		dn = 1
 		now=datetime.datetime.now()
-		if (med.breakfirst == now.hour):
+		if (med.breakfirst == now. our):
 			if (medbreakfirstminute == now.minute):
 				if (bf == 1):
 					med.movemotor()
@@ -26,7 +27,6 @@ def main():
 				if (dn == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("저녁약 먹을 시간입니다.", output_file)
-					if (med.movement):
 def calling():
 	while True :
 		text=call_stt.Call()
