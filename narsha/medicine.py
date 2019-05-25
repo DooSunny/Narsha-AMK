@@ -10,9 +10,9 @@ class medicine:
 	barkfirstminute = 0
 	launchminute = 0
 	dinnerminute = 0
-	GPIO.setmode(GPIO.BCM)
+	GPIO.setmode(GPIO.BOARD)
 	
-	control_pins = [4,17,27,22]
+	control_pins = [7,11,13,15]
 	for pin in control_pins:
 		GPIO.setup(pin, GPIO.OUT)
 		GPIO.output(pin,0)

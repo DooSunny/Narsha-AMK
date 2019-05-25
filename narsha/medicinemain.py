@@ -1,7 +1,8 @@
 import medicine as med
 import call_stt
 import threading
-import re.
+import re
+import datetime
 
 def main():
 	t1 = threading.Thread(target = calling)
@@ -12,7 +13,7 @@ def main():
 		lc = 1
 		dn = 1
 		now=datetime.datetime.now()
-		if (med.breakfirst == now. our):
+		if (med.breakfirst == now.hour):
 			if (medbreakfirstminute == now.minute):
 				if (bf == 1):
 					med.movemotor()
@@ -35,7 +36,7 @@ def calling():
 			print(numbers)
 			if((오후 in text) or (numbers[0] > 12)):
 				med.setbreakfirst(med.medicine,numbers[0],1)
-			else
+			else:
 				med.setbreakfirst(med.medicine,numbers[0],0)
 			if(분 in text):
 				med.setbreakfirstminute(med.medicine,numbers[1])
@@ -44,7 +45,7 @@ def calling():
 			print(numbers)
 			if((오후 in text) or (numbers[0] > 12)):
 				med.setlaunch(med.medicine,numbers[0],1)
-			else
+			else:
 				med.setlaunch(med.medicine,numbers[0],0)
 			if(분 in text):
 				med.setlaunchminute(med.medicine,numbers[1])
@@ -53,7 +54,7 @@ def calling():
 			print(numbers)
 			if((오후 in text) or (numbers[0] > 12)):
 				med.setdinner(med.medicine,numbers[0],1)
-			else
+			else:
 				med.setdinner(med.medicine,numbers[0],0)
 			if(분 in text):
 				med.setdinnerminute(med.medicine,numbers[1])
