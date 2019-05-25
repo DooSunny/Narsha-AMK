@@ -1,4 +1,5 @@
 from medicine import medicine
+import MicrophoneStream as MS
 import call_stt
 import threading
 import re
@@ -31,6 +32,7 @@ def main(med):
 					med.movemotor()
 					call_stt.getText2VoiceStream("저녁약 먹을 시간입니다.", output_file)
 def calling(med):
+	output_file="testtts.wav"
 	while True :
 		text=call_stt.Call()
 		if ("아침" in text):
@@ -39,30 +41,32 @@ def calling(med):
 			print(type(text))
 			print(type("오후"in text))
 			if(("오후" in text) or (int(numbers[0])> 12)):
-				med.setbreakfirst(med,int(numbers[0]),1)
+				med.setbreakfirst(int(numbers[0]),1)
 				call_stt.getText2VoiceStream("아침을 "+numbers[0]+"시로 변경하였습니다.", output_file)
+				print("test1")
 			else:
-				med.setbreakfirst(med,int(numbers[0]),0)
+				med.setbreakfirst(int(numbers[0]),0)
+				call_stt.getText2VoiceStream("아침을 "+numbers[0]+"시로 변경하였습니다.", output_file)
 			if("분" in text):
-				med.setbreakfirstminute(med,int(numbers[1]))
-		if("점심" in text):
+				med.setbreakfirstminute(int(numbers[1]))
+		elif("점심" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
 			if(("오후" in text) or (int(numbers[0]) > 12)):
-				med.setlaunch(med,int(numbers[0]),1)
+				med.setlaunch(int(numbers[0]),1)
 			else:
-				med.setlaunch(med,int(numbers[0]),0)
+				med.setlaunch(int(numbers[0]),0)
 			if("분" in text):
-				med.setlaunchminute(med,int(numbers[1]))
-		if ("저녁" in text):
+				med.setlaunchminute(int(numbers[1]))
+		elif ("저녁" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
 			if(("오후" in text) or (numbers[0] > 12)):
-				med.setdinner(med,int(numbers[0]),1)
+				med.setdinner(int(numbers[0]),1)
 			else:
-				med.setdinner(med,int(numbers[0]),0)
+				med.setdinner(int(numbers[0]),0)
 			if("분" in text):
-				med.setdinnerminute(med,int(numbers[1]))
+				med.setdinnerminute(int(numbers[1]))
 		else:
 			call_stt.getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
