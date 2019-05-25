@@ -39,29 +39,30 @@ def calling(med):
 			print(type(text))
 			print(type("오후"in text))
 			if(("오후" in text) or (int(numbers[0])> 12)):
-				med.setbreakfirst(med,numbers[0],1)
+				med.setbreakfirst(med,int(numbers[0]),1)
+				call_stt.getText2VoiceStream("아침을 "+numbers[0]+"시로 변경하였습니다.", output_file)
 			else:
-				med.setbreakfirst(med,numbers[0],0)
+				med.setbreakfirst(med,int(numbers[0]),0)
 			if("분" in text):
-				med.setbreakfirstminute(med,numbers[1])
+				med.setbreakfirstminute(med,int(numbers[1]))
 		if("점심" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
-			if(("오후" in text) or (numbers[0] > 12)):
-				med.setlaunch(med,numbers[0],1)
+			if(("오후" in text) or (int(numbers[0]) > 12)):
+				med.setlaunch(med,int(numbers[0]),1)
 			else:
-				med.setlaunch(med,numbers[0],0)
+				med.setlaunch(med,int(numbers[0]),0)
 			if("분" in text):
-				med.setlaunchminute(med,numbers[1])
+				med.setlaunchminute(med,int(numbers[1]))
 		if ("저녁" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
 			if(("오후" in text) or (numbers[0] > 12)):
-				med.setdinner(med,numbers[0],1)
+				med.setdinner(med,int(numbers[0]),1)
 			else:
-				med.setdinner(med,numbers[0],0)
+				med.setdinner(med,int(numbers[0]),0)
 			if("분" in text):
-				med.setdinnerminute(med,numbers[1])
+				med.setdinnerminute(med,int(numbers[1]))
 		else:
 			call_stt.getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
