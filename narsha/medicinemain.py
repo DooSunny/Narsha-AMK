@@ -48,7 +48,7 @@ def calling(med):
 				call_stt.getText2VoiceStream("아침을 "+numbers[0]+"시로 변경하였습니다.", output_file)
 			if("분" in text):
 				med.setbreakfirstminute(int(numbers[1]))
-				call_stt.getText2VoiceStream("아침을 "+med.breakfirst+"시 "+med.breakfirstminute"분 으로 변경하였습니다.", output_file)
+				call_stt.getText2VoiceStream("아침을 "+med.breakfirst+"시 "+med.breakfirstminute+"분 으로 변경하였습니다.", output_file)
 		elif("점심" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
@@ -60,7 +60,7 @@ def calling(med):
 				call_stt.getText2VoiceStream("점심을 "+numbers[0]+"시로 변경하였습니다.", output_file)
 			if("분" in text):
 				med.setlaunchminute(int(numbers[1]))
-				call_stt.getText2VoiceStream("점심을 "+med.launch+"시 "+med.launchminute"분 으로 변경하였습니다.", output_file)
+				call_stt.getText2VoiceStream("점심을 "+med.launch+"시 "+med.launchminute+"분 으로 변경하였습니다.", output_file)
 		elif ("저녁" in text):
 			numbers = re.findall("\d+",text)
 			print(numbers)
@@ -72,7 +72,7 @@ def calling(med):
 				call_stt.getText2VoiceStream("저녁을 "+numbers[0]+"시로 변경하였습니다.", output_file)
 			if("분" in text):
 				med.setdinnerminute(int(numbers[1]))
-				call_stt.getText2VoiceStream("저녁을 "+med.dinner+"시 "+med.dinnerminute"분 으로 변경하였습니다.", output_file)
+				call_stt.getText2VoiceStream("저녁을 "+med.dinner+"시 "+med.dinnerminute+"분 으로 변경하였습니다.", output_file)
 		else:
 			call_stt.getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
