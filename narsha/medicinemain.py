@@ -21,16 +21,25 @@ def main(med):
 				if (bf == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("아침약 먹을 시간입니다.", output_file)
+					bf=0
+					lc=1
+					dn=1
 		elif (med.launch == now.hour):
 			if (med.launchminute == now.minute):
 				if (lc == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("점심약 먹을 시간입니다.", output_file)
+					lc=0
+					bf=1
+					dn=1
 		elif (med.dinner == now.hour):
 			if (med.dinnerminute == now.minute):
 				if (dn == 1):
 					med.movemotor()
 					call_stt.getText2VoiceStream("저녁약 먹을 시간입니다.", output_file)
+					dn=0
+					lc=1
+					bf=1
 def calling(med):
 	output_file="testtts.wav"
 	while True :
