@@ -43,6 +43,7 @@ def main(med):
 					MS.play_file(output_file)
 def calling(med):
 	output_file="testtts.wav"
+	med.init()
 	while True :
 		print(datetime.datetime.now())
 		text=call_stt.Call()
