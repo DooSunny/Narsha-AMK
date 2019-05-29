@@ -14,16 +14,16 @@ def main():
 	i=0
 	while True :
 		text=call_stt.Call()
-		if("안녕" in text):
+		if "안녕" in text:
 			call_stt.getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
-		elif("이름" in text):
+		elif "이름" in text:
 			call_stt.getText2VoiceStream("제 이름은 기가지니입니다.", output_file)
 
-		elif(("몇시" in text) or ("시간" in text) ):
+		elif ("몇시" in text) or ("시간" in text):
 			hour=ex1_Clock.Clock_hour()
 			minute=ex1_Clock.Clock_minute()
 			call_stt.getText2VoiceStream("지금은 "+hour+"시, "+str(minute)+"분 입니다.", output_file)
-		elif("뉴스" in text):
+		elif "뉴스" in text:
 			for title in news.newspaperdaum.setarticle(news.newspaperdaum):
 				call_stt.getText2VoiceStream(title,output_file)
 				MS.play_file(output_file)
@@ -34,21 +34,26 @@ def main():
 					if i>2:
 						print("\n")
 						break 
-		elif("날씨" in text):
-			if("서울" in text): call_stt.getText2VoiceStream(weather.getWeather("서울"), output_file)
-			elif("대전" in text): call_stt.getText2VoiceStream(weather.getWeather("대전"), output_file)
-			elif("세종" in text): call_stt.getText2VoiceStream(weather.getWeather("세종"), output_file)
-			elif("광주" in text): call_stt.getText2VoiceStream(weather.getWeather("광주"), output_file)
-			elif("대구" in text): call_stt.getText2VoiceStream(weather.getWeather("대구"), output_file)
-			elif("울산" in text): call_stt.getText2VoiceStream(weather.getWeather("울산"), output_file)
-			elif("부산" in text): call_stt.getText2VoiceStream(weather.getWeather("부산"), output_file)
-			elif("제주" in text): call_stt.getText2VoiceStream(weather.getWeather("제주"), output_file)		
-			else: call_stt.getText2VoiceStream("현재는 특별시 광역시 자치도의 조회만 가능합니다", output_file)
+		elif "날씨" in text:
+			founded = False
+			for local in weather.local_coords.keys():
+				if local in text: 
+					call_stt.getText2VoiceStream(create_weather_text(local), output_file)
+					founded = True
+					break
+			if not founded: call_stt.getText2VoiceStream("현재는 특별시, 광역시, 자치도의 조회만 가능합니다", output_file)
 								
 		else:
 			call_stt.getText2VoiceStream("알아들을 수 가 없습니다. 다시한번 말씀 해주세요.", output_file)
 
 		MS.play_file(output_file)
+
+def create_weather_text(local_name):
+	weather_info = weather.get_weather_by_coord(weather.get_coords_by_local_name(local_name))
+	if weather_info != None:
+		return "현재 온도는 " + str(weather_info['main']['temp']) + "도이고, 습도는 " + str(weather_info['main']['humidity']) + "퍼센트입니다."
+	else:
+		return "날씨를 받아오던 중 오류가 발생하였습니다."
 
 if __name__ == '__main__':
 	main()
