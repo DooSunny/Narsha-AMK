@@ -40,9 +40,11 @@ def main(med):
 					dn=0
 					lc=1
 					bf=1
+					MS.play_file(output_file)
 def calling(med):
 	output_file="testtts.wav"
 	while True :
+		print(datetime.datetime.now())
 		text=call_stt.Call()
 		if ("아침" in text):
 			numbers = re.findall("\d+",text)
