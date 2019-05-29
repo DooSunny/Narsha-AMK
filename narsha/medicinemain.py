@@ -7,13 +7,13 @@ import datetime
 import time
 
 def main(med):
-	t1 = threading.Thread(target = calling(med))
+	t1 = threading.Thread(target = calling(med,slp))
 	t1.daemon=True
 	t1.start()
 	output_file = "testtts.wav"
 	i=0
-	time.sleep(1)
 	while True :
+		time.sleep(1)
 		bf = 1
 		lc = 1
 		dn = 1
@@ -60,8 +60,8 @@ def calling(med):
 			print(type("오후"in text))
 			if(("오후" in text)):
 				med.setbreakfirst(int(numbers[0]),1)
-				time = int(numbers[0])+12
-				timestr = str(time)
+				timea = int(numbers[0])+12
+				timestr = str(timea)
 				call_stt.getText2VoiceStream("아침을 "+timestr+"시로 변경하였습니다.", output_file)
 			else:
 				med.setbreakfirst(int(numbers[0]),0)
@@ -74,8 +74,8 @@ def calling(med):
 			print(numbers)
 			if(("오후" in text)):
 				med.setlaunch(int(numbers[0]),1)
-				time = int(numbers[0])+12
-				timestr = str(time)
+				timea = int(numbers[0])+12
+				timestr = str(timea)
 				call_stt.getText2VoiceStream("점심을 "+timestr+"시로 변경하였습니다.", output_file)
 			else:
 				med.setlaunch(int(numbers[0]),0)
@@ -88,8 +88,8 @@ def calling(med):
 			print(numbers)
 			if(("오후" in text)):
 				med.setdinner(int(numbers[0]),1)
-				time = int(numbers[0])+12
-				timestr = str(time)
+				timea = int(numbers[0])+12
+				timestr = str(timea)
 				print("오후")
 				call_stt.getText2VoiceStream("저녁을 "+timestr+"시로 변경하였습니다.", output_file)
 			else:
