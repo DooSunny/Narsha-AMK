@@ -31,7 +31,10 @@ def get_weather_by_coord(coord):
     
 def request_get(url):
     response = requests.get(url)
-    return response.json()
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return None
 
 if __name__ == "__main__":
     print(get_weather_by_coord(get_coords_by_local_name('대구')))
