@@ -4,6 +4,7 @@ import call_stt
 import threading
 import re
 import datetime
+import time
 
 def main(med):
 	t1 = threading.Thread(target = calling(med))
