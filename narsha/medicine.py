@@ -49,12 +49,12 @@ class medicine:
 		self.dinnerminute = time
 	def movemotor(self):
 		for pin in range(4):
-			GPIO.output(control_pins[pin], halfstep_seq[movement%8][pin])
+			GPIO.output(self.control_pins[pin], self.halfstep_seq[self.movement%8][self.pin])
 		time.sleep(0.001)
 		self.movement+=1
 	def init(self):
 		for pin in range(4):
-			GPIO.output(control_pins[pin], halfstep_seq[0][pin])
+			GPIO.output(self.control_pins[self.pin], self.halfstep_seq[0][self.pin])
 		time.sleep(0.001)
 		self.movement+=1
 
