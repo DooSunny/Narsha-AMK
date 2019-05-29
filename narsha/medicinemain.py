@@ -7,7 +7,7 @@ import datetime
 import time
 
 def main(med):
-	t1 = threading.Thread(target = calling(med,slp))
+	t1 = threading.Thread(target = calling(med))
 	t1.daemon=True
 	t1.start()
 	output_file = "testtts.wav"
