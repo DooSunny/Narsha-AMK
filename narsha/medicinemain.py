@@ -44,8 +44,10 @@ def main(med):
 def calling(med):
 	output_file="testtts.wav"
 	med.init()
+	tiem = datetime.datetime.now()
 	while True :
-		print(datetime.datetime.now())
+		print(time.hour)
+		print(time.minute)
 		text=call_stt.Call()
 		if ("아침" in text):
 			numbers = re.findall("\d+",text)
