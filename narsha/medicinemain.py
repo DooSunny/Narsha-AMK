@@ -11,6 +11,7 @@ def main(med):
 	t1.start()
 	output_file = "testtts.wav"
 	i=0
+	delay(1)
 	while True :
 		bf = 1
 		lc = 1
