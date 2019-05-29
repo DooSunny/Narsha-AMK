@@ -46,11 +46,11 @@ def main(med):
 def calling(med):
 	output_file="testtts.wav"
 	med.init()
-	tiem = datetime.datetime.now()
+	now = datetime.datetime.now()
 	time.sleep(1)
 	while True :
-		print(time.hour)
-		print(time.minute)
+		print(now.hour)
+		print(now.minute)
 		print(med.dinner)
 		text=call_stt.Call()
 		if ("아침" in text):
