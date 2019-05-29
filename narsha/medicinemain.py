@@ -48,6 +48,7 @@ def calling(med):
 	while True :
 		print(time.hour)
 		print(time.minute)
+		print(med.dinner)
 		text=call_stt.Call()
 		if ("아침" in text):
 			numbers = re.findall("\d+",text)
