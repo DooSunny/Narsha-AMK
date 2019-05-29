@@ -81,7 +81,7 @@ def calling(med):
 				med.setdinner(int(numbers[0]),1)
 				time = int(numbers[0])+12
 				timestr = str(time)
-				print('오후')
+				print("오후")
 				call_stt.getText2VoiceStream("저녁을 "+timestr+"시로 변경하였습니다.", output_file)
 			else:
 				med.setdinner(int(numbers[0]),0)
