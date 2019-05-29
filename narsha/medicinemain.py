@@ -45,6 +45,7 @@ def calling(med):
 	output_file="testtts.wav"
 	med.init()
 	tiem = datetime.datetime.now()
+	delay(1)
 	while True :
 		print(time.hour)
 		print(time.minute)
