@@ -11,7 +11,7 @@ def main(med):
 	t1.start()
 	output_file = "testtts.wav"
 	i=0
-	delay(1)
+	time.sleep(1)
 	while True :
 		bf = 1
 		lc = 1
@@ -46,7 +46,7 @@ def calling(med):
 	output_file="testtts.wav"
 	med.init()
 	tiem = datetime.datetime.now()
-	delay(1)
+	time.sleep(1)
 	while True :
 		print(time.hour)
 		print(time.minute)
