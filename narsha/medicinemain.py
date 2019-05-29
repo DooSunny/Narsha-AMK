@@ -42,7 +42,9 @@ def calling(med):
 			print(type("오후"in text))
 			if(("오후" in text)):
 				med.setbreakfirst(int(numbers[0]),1)
-				call_stt.getText2VoiceStream("아침을 "+(int(numbers[0])+12)+"시로 변경하였습니다.", output_file)
+				time = int(number[0])+12
+				timestr = str(time)
+				call_stt.getText2VoiceStream("아침을 "+timestr+"시로 변경하였습니다.", output_file)
 			else:
 				med.setbreakfirst(int(numbers[0]),0)
 				call_stt.getText2VoiceStream("아침을 "+numbers[0]+"시로 변경하였습니다.", output_file)
@@ -54,7 +56,9 @@ def calling(med):
 			print(numbers)
 			if(("오후" in text)):
 				med.setlaunch(int(numbers[0]),1)
-				call_stt.getText2VoiceStream("점심을 "+(int(numbers[0])+12)+"시로 변경하였습니다.", output_file)
+				time = int(number[0])+12
+				timestr = str(time)
+				call_stt.getText2VoiceStream("점심을 "+timestr+"시로 변경하였습니다.", output_file)
 			else:
 				med.setlaunch(int(numbers[0]),0)
 				call_stt.getText2VoiceStream("점심을 "+numbers[0]+"시로 변경하였습니다.", output_file)
@@ -66,7 +70,9 @@ def calling(med):
 			print(numbers)
 			if(("오후" in text)):
 				med.setdinner(int(numbers[0]),1)
-				call_stt.getText2VoiceStream("저녁을 "+(int(numbers[0])+12)+"시로 변경하였습니다.", output_file)
+				time = int(number[0])+12
+				timestr = str(time)
+				call_stt.getText2VoiceStream("저녁을 "+timestr+"시로 변경하였습니다.", output_file)
 			else:
 				med.setdinner(int(numbers[0]),0)
 				call_stt.getText2VoiceStream("저녁을 "+numbers[0]+"시로 변경하였습니다.", output_file)
