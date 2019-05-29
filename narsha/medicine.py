@@ -52,5 +52,10 @@ class medicine:
 			GPIO.output(control_pins[pin], halfstep_seq[movement%8][pin])
 		time.sleep(0.001)
 		self.movement+=1
+	def init(self):
+		for pin in range(4):
+			GPIO.output(control_pins[pin], halfstep_seq[0][pin])
+		time.sleep(0.001)
+		self.movement+=1
 
 
