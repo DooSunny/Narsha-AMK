@@ -13,36 +13,37 @@ def main(med):
 	output_file = "testtts.wav"
 	i=0
 	while True :
-		time.sleep(1)
-		bf = 1
-		lc = 1
-		dn = 1
-		now=datetime.datetime.now()
-		if (med.breakfirst == now.hour):
-			if (med.breakfirstminute == now.minute):
-				if (bf == 1):
-					med.movemotor()
-					call_stt.getText2VoiceStream("아침약 먹을 시간입니다.", output_file)
-					bf=0
-					lc=1
-					dn=1
-		elif (med.launch == now.hour):
-			if (med.launchminute == now.minute):
-				if (lc == 1):
-					med.movemotor()
-					call_stt.getText2VoiceStream("점심약 먹을 시간입니다.", output_file)
-					lc=0
-					bf=1
-					dn=1
-		elif (med.dinner == now.hour):
-			if (med.dinnerminute == now.minute):
-				if (dn == 1):
-					med.movemotor()
-					call_stt.getText2VoiceStream("저녁약 먹을 시간입니다.", output_file)
-					dn=0
-					lc=1
-					bf=1
-					MS.play_file(output_file)
+	    time.sleep(1)
+	    bf = 1
+	    lc = 1
+	    dn = 1
+	    now=datetime.datetime.now()
+	    if (med.breakfirst == now.hour):
+	    	if (med.breakfirstminute == now.minute):
+	    	    if (bf == 1):
+	    	        med.movemotor()
+	    	        call_stt.getText2VoiceStream("아침약 먹을 시간입니다.", output_file)
+	    	        bf=0
+	    	        lc=1
+	    	        dn=1
+	    elif (med.launch == now.hour):
+	    	if (med.launchminute == now.minute):
+	    	    if (lc == 1):
+	    	        med.movemotor()
+	    	        call_stt.getText2VoiceStream("점심약 먹을 시간입니다.", output_file)
+	    	        lc=0
+	    	        bf=1
+	    	        dn=1
+	    elif (med.dinner == now.hour):
+	    	if (med.dinnerminute == now.minute):
+	    	    if (dn == 1):
+                        print("저녁시간")
+	    	        med.movemotor()
+	    	        call_stt.getText2VoiceStream("저녁약 먹을 시간입니다.", output_file)
+	    	        dn=0
+	    	        lc=1
+	    	        bf=1
+	    	        MS.play_file(output_file)
 def calling(med):
 	output_file="testtts.wav"
 	med.init()
