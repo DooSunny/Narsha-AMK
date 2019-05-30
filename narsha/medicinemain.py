@@ -6,18 +6,11 @@ import re
 import datetime
 import time
 
-def calling_thread(med):
-    t1 = threading.Thread(target = calling,args=(med))
-    t1.daemon=True
-    t1.start()
 
-def main_thread(med):
-    t1 = threading.Thread(target=main,args = (med))
-    t1.daemon=True
-    t1.start()
-    
 def main(med):
-        
+	t1 = threading.Thread(target = calling,args=(med))
+	t1.daemon=True
+	t1.start()
 	output_file = "testtts.wav"
 	i=0
 	while True :
@@ -116,5 +109,4 @@ def calling(med):
 
 if __name__ == '__main__':
 	med = medicine()
-	main_thread(med)
-	calling_thread(med)
+	main(med)
