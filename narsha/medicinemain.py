@@ -18,6 +18,7 @@ def main(med):
 		lc = 1
 		dn = 1
 		now=datetime.datetime.now()
+                print(now.hour)
 		if (med.breakfirst == now.hour):
 			if (med.breakfirstminute == now.minute):
 				if (bf == 1):
@@ -46,7 +47,6 @@ def main(med):
 					MS.play_file(output_file)
 def calling(med):
 	output_file="testtts.wav"
-	med.init()
 	now = datetime.datetime.now()
 	time.sleep(1)
 	while True :
