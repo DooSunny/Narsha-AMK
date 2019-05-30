@@ -6,7 +6,7 @@ class medicine:
 	breakfirst = 8
 	movement = 0
 	launch = 12
-	dinner = 6
+	dinner = 18
 	barkfirstminute = 0
 	launchminute = 0
 	dinnerminute = 0
@@ -27,19 +27,19 @@ class medicine:
 		[1,0,0,1]
 	]
 	def setbreakfirst(self,time,morning):
-		if morning==1:
+		if morning==0:
 			self.breakfirst = time
-		elif morning==0:
+		elif morning==1:
 			self.breakfirst = time+12
 	def setlaunch(self,time,morning):
-		if morning==1:
+		if morning==0:
 			self.launch = time
-		elif morning==0:
+		elif morning==1:
 			self.launch = time+12
 	def setdinner(self,time,morning):
-		if morning==1:
+		if morning==0:
 			self.dinner = time
-		elif morning==0:
+		elif morning==1:
 			self.dinner = time+12
 	def setbreakfirstminute(self,time):
 		self.breakfirstminute = time
@@ -51,6 +51,6 @@ class medicine:
 		for cnt in range(500):
 			for pin in range(4):
 				GPIO.output(self.control_pins[pin], self.halfstep_seq[self.movement%8][pin])
-			time.sleep(1)
+			time.sleep(0.001)
 			self.movement+=1
 
