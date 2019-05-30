@@ -37,7 +37,7 @@ def main(med):
 		elif (med.dinner == now.hour):
 			if (med.dinnerminute == now.minute):
 				if (dn == 1):
-						print("저녁시간")
+					print("저녁시간")
 					med.movemotor()
 					call_stt.getText2VoiceStream("저녁약 먹을 시간입니다.", output_file)
 					dn=0
