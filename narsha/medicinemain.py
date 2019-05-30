@@ -20,9 +20,9 @@ def main(med):
 		dn = 1
 		now=datetime.datetime.now()
 		print(now.hour)
-                print(med.dinner)
-                print(now.minute)
-                print(med.dinnerminute)
+        print(med.dinner)
+        print(now.minute)
+        print(med.dinnerminute)
 		if (med.breakfirst == now.hour):
 			if (med.breakfirstminute == now.minute):
 				if (bf == 1):
