@@ -7,12 +7,12 @@ import datetime
 import time
 
 def calling_thread(med):
-    t1 = threading.Thread(target = calling(med))
+    t1 = threading.Thread(target = calling,args=(med))
     t1.daemon=True
     t1.start()
 
 def main_thread(med):
-    t1 = threading.Thread(target=main(med))
+    t1 = threading.Thread(target=main,args = (med))
     t1.daemon=True
     t1.start()
     
