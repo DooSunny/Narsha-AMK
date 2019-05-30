@@ -18,7 +18,7 @@ def main(med):
 		lc = 1
 		dn = 1
 		now=datetime.datetime.now()
-                print(now.hour)
+        print(now.hour)
 		if (med.breakfirst == now.hour):
 			if (med.breakfirstminute == now.minute):
 				if (bf == 1):
@@ -89,7 +89,7 @@ def calling(med):
 			print(numbers)
 			if(("오후" in text)):
 				med.setdinner(int(numbers[0]),1)
-				timea = int(numbers[0])+12
+				timea = (int(numbers[0])+12)
 				timestr = str(timea)
 				print("오후")
 				call_stt.getText2VoiceStream("저녁을 "+timestr+"시로 변경하였습니다.", output_file)
